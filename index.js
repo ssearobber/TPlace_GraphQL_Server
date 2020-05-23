@@ -4,6 +4,7 @@ import schema from './schema';
 import connectDB from './database/util/connectDB';
 import path from 'path';
 import dotenv from 'dotenv';
+import { isAuthenticated } from './middlewares';
 
 //환경변수 설정
 dotenv.config({ path: path.join(__dirname, '/.env') });
@@ -13,7 +14,10 @@ connectDB();
 
 const PORT = process.env.PORT || 4000;
 
-const server = new GraphQLServer({ schema });
+const server = new GraphQLServer({
+  schema,
+  context: ({ request }) => ({ request, isAuthenticated }),
+});
 
 server.express.use(logger('dev'));
 

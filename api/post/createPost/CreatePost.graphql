@@ -1,0 +1,8 @@
+type CreatePostResponse {
+  success: Boolean!
+  error: String
+  data: Post
+}
+type Mutation {
+  createPost(title: String!, description: String!, imgUrl: String): CreatePostResponse!
+}
