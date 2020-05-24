@@ -11,7 +11,7 @@ export const isAuthenticated = async (request) => {
     } else {
       request.userId = null;
     }
-    next();
+    // next();
   } catch (error) {
     console.log(error);
   }
