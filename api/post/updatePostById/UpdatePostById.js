@@ -9,10 +9,17 @@ export default {
             let post = await Post.findById({ _id: request.params.postId });
             // post가 존재하지 않을 때
             if (!post) {
-                return next(new Error('포스트가 존재하지 않습니다 .'));}
+                return {
+                    success: false,
+                    error: '포스트가 존재하지 않습니다.',
+                  }}
 
             if (post.user.toString() !== currentUserId ) {
-                return next(new Error('해당 권한이 없습니다.'));}
+                return {
+                    success: false,
+                    error: '해당 권한이 없습니다.',
+                    data: post
+                  }}
 
             try {
                 post = await Post.findByIdAndUpdate(
