@@ -4,18 +4,15 @@ export const isAuthenticated = async (request) => {
   const token = request.headers.authorization;
 
   try {
-    
     if (token) {
-      let userId = await jwt.verify(token, process.env.JWT_SECRET || '');
-      userId = userId._id;
-      request.userId = userId;
+      let existingUser = await jwt.verify(token, process.env.JWT_SECRET || '');
+      existingUser = existingUser._id;
+      request.userId = existingUser;
     } else {
       request.userId = null;
     }
-    // next();
   } catch (error) {
     console.log(error);
   }
-
   return;
 };

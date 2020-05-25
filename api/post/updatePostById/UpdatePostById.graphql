@@ -1,0 +1,9 @@
+type UpdatePostByIdResponse {
+    success: Boolean!
+    error: String
+    data: Post
+}
+
+type Mutation {
+    updatePostById(title:String, description: String, imgUrl: String, postId: ID!): UpdatePostByIdResponse!
+}
