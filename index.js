@@ -3,7 +3,7 @@ import { GraphQLServer } from 'graphql-yoga';
 import logger from 'morgan';
 import schema from './schema';
 import connectDB from './database/util/connectDB';
-import { isAuthenticated } from './middlewares';
+import { isAuthenticated } from './middlewares/auth';
 
 //DB연결
 connectDB();
