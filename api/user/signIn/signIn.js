@@ -1,4 +1,4 @@
-import User from '../../../database/model/User';
+import User from '../../../database/mongoDB/model/User';
 const bcrypt = require('bcrypt');
 import createJWT from '../../../util/createJWT';
 

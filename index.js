@@ -2,7 +2,7 @@ import './env';
 import { GraphQLServer } from 'graphql-yoga';
 import logger from 'morgan';
 import schema from './schema';
-import connectDB from './database/util/connectDB';
+import connectDB from './database/mongoDB/util/connectDB';
 import { isAuthenticated } from './middlewares/auth';
 
 //DB연결

@@ -1,4 +1,4 @@
-import Post from '../../../database/model/Post';
+import Post from '../../../database/mongoDB/model/Post';
 
 export default {
   Query: {
