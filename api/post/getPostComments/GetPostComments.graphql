@@ -1,0 +1,9 @@
+type GetPostCommentResponse {
+ success : Boolean!
+ error : String
+ data : Post
+}
+
+type Query {
+ getPostComment(postId: ID!): GetPostCommentResponse
+}

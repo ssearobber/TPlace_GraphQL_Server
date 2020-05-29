@@ -1,0 +1,7 @@
+type PostComment {
+  text: String!
+  post: Post!
+  user: User!
+  createdAt: String!
+  updatedAt: String!
+}

@@ -19,6 +19,10 @@ const PostSchema = new Schema(
       type: String,
       default: 'https://b-rise.jp/wp-content/themes/b-rise/images/sample_img.gif',
     },
+    view: {
+      type: Number,
+      default: 0,
+    },
     user: {
       type: mongoose.Types.ObjectId,
       ref: 'User',
