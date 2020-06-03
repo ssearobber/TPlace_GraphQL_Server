@@ -2,17 +2,15 @@ import Post from '../../../database/mongoDB/model/Post';
 
 export default {
   Mutation: {
-    createPost: async (_, args, { request, isAuthenticated }) => {
-      console.log(request.headers.authorization);
-      isAuthenticated(request);
-      const { userId: currentUserId } = request;
+    createPost: async (_, { input }, { request, isAuthenticated }) => {
+      const currentUserId = await isAuthenticated(request);
 
-      if (!args.imgUrl) {
-        args.imgUrl = 'https://b-rise.jp/wp-content/themes/b-rise/images/sample_img.gif';
+      if (!input.imgUrl) {
+        input.imgUrl = 'https://b-rise.jp/wp-content/themes/b-rise/images/sample_img.gif';
       }
       try {
         const post = await Post.create({
-          ...args,
+          ...input,
           user: currentUserId,
         });
 
