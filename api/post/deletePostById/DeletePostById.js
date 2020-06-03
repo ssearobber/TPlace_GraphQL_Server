@@ -4,10 +4,10 @@ import Post from '../../../database/mongoDB/model/Post';
 export default {
   Mutation: {
     deletePostById: async (_, { postId }, { request, isAuthenticated }) => {
-      isAuthenticated(request);
-      const { userId: currentUserId } = request;
+      const currentUserId = await isAuthenticated(request);
+
       try {
-        let post = await Post.findById({ _id: request.params.postId });
+        let post = await Post.findById({ _id: postId });
         // post가 존재하지 않을 때
         if (!post) {
           return {
@@ -15,7 +15,6 @@ export default {
             error: '포스트가 존재하지 않습니다.',
           };
         }
-
         if (post.user.toString() !== currentUserId) {
           return {
             success: false,
