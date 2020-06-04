@@ -4,11 +4,10 @@ export default {
   Mutation: {
     updatePostById: async (
       _,
-      { title, description, imgUrl, postId },
+      { input: { title, description, imgUrl }, postId },
       { request, isAuthenticated },
     ) => {
-      isAuthenticated(request);
-      const { userId: currentUserId } = request;
+      const currentUserId = await isAuthenticated(request);
 
       let post = await Post.findById({ _id: postId });
       // post가 존재하지 않을 때
