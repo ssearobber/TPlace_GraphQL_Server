@@ -105,3 +105,4 @@ dist
 
 # 개인적인 추가
 .DS_Store
+.yarn.lock
