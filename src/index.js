@@ -5,7 +5,6 @@ import schema from './schema';
 import connectDB from './database/mongoDB/util/connectDB';
 import { isAuthenticated } from './middlewares/auth';
 
-console.log('브랜치 테스트');
 //DB연결
 connectDB();
 const PORT = process.env.PORT || 4000;
