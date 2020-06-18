@@ -8,13 +8,24 @@ export default {
           { _id: postId },
           { $inc: { view: 1 } }, // api가 호출될때마다(즉 한번씩 getPostById를 볼때마다) 조회수(view) 늘리는 로직
           { new: true, runValidators: false },
-        ).populate({
-          path: 'user',
-          model: 'User',
-          select: 'id username email',
-        });
+        )
+          .populate({
+            path: 'user',
+            model: 'User',
+            select: 'id username email',
+          })
+          .populate({
+            path: 'postComments',
+            model: 'PostComment',
+            select: 'id text',
+            populate: {
+              path: 'user',
+              model: 'User',
+              select: 'id username email',
+            },
+          });
 
-        console.log(post);
+        console.log('post : ' + post);
         return {
           success: true,
           error: null,

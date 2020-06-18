@@ -4,6 +4,7 @@ type Post {
   description: String!
   imgUrl: String!
   user: User!
+  postComments: [PostComment]!
   createdAt: String!
   updatedAt: String!
 }

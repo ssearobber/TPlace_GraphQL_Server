@@ -17,6 +17,18 @@ const UserSchema = new Schema(
       type: String,
       required: [true, '비밀번호를 입력해 주세요'],
     },
+    posts: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: 'Post',
+      },
+    ],
+    postComments: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: 'PostComment',
+      },
+    ],
   },
   { timestamps: true },
 );

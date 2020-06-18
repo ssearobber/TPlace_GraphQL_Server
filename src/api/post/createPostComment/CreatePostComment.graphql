@@ -4,5 +4,5 @@ type CreatePostCommentResponse {
   data: PostComment
 }
 type Mutation {
-  CreatePostComment(text: String!, postId: ID!): CreatePostCommentResponse!
+  createPostComment(postId: ID!, text: String!): CreatePostCommentResponse!
 }

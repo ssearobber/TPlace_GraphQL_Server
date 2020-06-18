@@ -1,4 +1,5 @@
 type PostComment {
+  id: ID!
   text: String!
   post: Post!
   user: User!
